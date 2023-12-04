@@ -23,10 +23,15 @@ export default {
 const options = {
   method: 'GET',
   url: 'https://api.themoviedb.org/3/search/movie',
-  params: {query: 'matrix', include_adult: 'false', language: 'en-US', page: '1'},
+  params: {
+    query: 'ritorno%20al%20futuro',
+    include_adult: 'false',
+    language: 'en-US',
+    page: '1'
+  },
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer 7f49a8a4e093c76db9959c9de6405a5b'
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZjQ5YThhNGUwOTNjNzZkYjk5NTljOWRlNjQwNWE1YiIsInN1YiI6IjY1NmRkZWJlNjUxN2Q2MDEwZTU5Zjk3MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.s4MVvj4WTl3oWg6ElBUJnfeTRzCwLv8tp5NuSSYP4Js'
   }
 };
 
@@ -47,8 +52,11 @@ axios
 
 
 <template>
-  
-  <findMoovie msg="Vite + Vue" />
+  <findMoovie/>
+
+  <div>
+    <p>{{  }}</p>
+  </div>
 </template>
 
 <style scoped>
