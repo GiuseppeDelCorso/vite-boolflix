@@ -3,14 +3,20 @@ import { store } from "../store.js"
 
 export default {
    name: "findMoovie",
-   props:{
-      info: Object
+   props: {
+      links: Object
    },
+   methods: {
    data(){
       return{
          store
       }
-   }
+   },
+        search(){
+            console.log("Cerca: ", this.store.shearcMovie)
+            this.$emit("search")
+        }
+    },
 
 }
 
@@ -18,14 +24,17 @@ export default {
 </script>
 
 <template>
-      <div v-for="contenuti in this.store.contenuto">
+      
+      <div >
          
-         <p>{{ contenuti }}</p>
+         <p>{{ links.title }}</p>
          
       </div>
 
 </template>
 
 <style scoped>
-
+   p{
+      color: white;
+   }
 </style>
