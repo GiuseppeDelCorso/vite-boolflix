@@ -38,7 +38,8 @@ const options = {
 axios
   .request(options)
   .then(function (response) {
-    console.log(response.data);
+    store.contenuto = response.data
+    console.log(store.contenuto);
   })
   .catch(function (error) {
     console.error(error);
@@ -52,10 +53,11 @@ axios
 
 
 <template>
+
   <findMoovie/>
 
   <div>
-    <p>{{  }}</p>
+    
   </div>
 </template>
 
