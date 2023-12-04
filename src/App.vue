@@ -1,4 +1,5 @@
 <script >
+import { onMounted } from 'vue'
 import findMoovie from './components/findMoovie.vue'
 import { store } from "./store.js"
 import axios from 'axios'
@@ -12,9 +13,22 @@ export default {
     return {
       store
     }
-  }
+  },
+  
+  mounted() {
+    this.findlinks();
+  },
+  methods:{
+    findlinks(){
+      
+    }
 
+
+  }
 }
+
+  
+
 </script>
 
 
