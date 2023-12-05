@@ -1,22 +1,17 @@
 <script >
-import { store } from "../store.js"
-
 export default {
-   name: "findMoovie",
-   props: {
-      links: Object
-   },
-   methods: {
-   data(){
-      return{
-         store
-      }
-   },
-        search(){
-            console.log("Cerca: ", this.store.shearcMovie)
-            this.$emit("search")
-        }
-    },
+	name: "findMoovie",
+	props: {
+		links: Object
+	},
+	data() {
+		return {
+
+		}
+	},
+	methods: {
+
+	},
 
 }
 
@@ -24,20 +19,21 @@ export default {
 </script>
 
 <template>
-      
-      <div >
-         
-         <p>{{ links.title }}</p>
-         <p>{{ links.original_title }}</p>
-         <p>{{ links.vote_count }}</p>
-         <p>{{ links.original_language }}</p>
-         
-      </div>
+	<div class="container BgCard">
+		<div class="row">
+			<div class="col-12">
+				<p>{{ links.title }}</p>
+				<p>{{ links.original_title }}</p>
+				<p>{{ links.vote_count }}</p>
+				<p>{{ links.original_language }}</p>
+			</div>
+		</div>
 
+	</div>
 </template>
 
 <style scoped>
-   p{
-      color: white;
-   }
+.BgCard {
+	background-color: black;
+}
 </style>
