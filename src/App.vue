@@ -1,54 +1,57 @@
 <script >
 import findMoovie from './components/findMoovie.vue'
+import getFilm from './components/getFilm.vue'
 import { store } from "./store.js"
 import axios from 'axios'
 
 
 export default {
-  components: {
-    findMoovie,
-  },
-  data(){
-    return {
-      store
-    }
-  },
-  mounted() {
-		  this.findLinks();
+	components: {
+		findMoovie,
+		getFilm
 	},
-  methods:{
-    findLinks() {
-    
-
-axios
-
-      let link = this.store;
-
-  axios.request(link).then(function (response) {
-    store.contenuto = response.data
-    console.log( response.data);
-  })
-  .catch(function (error) {
-    console.error(error);
-  });
-    } 
-  }
-}
+	data() {
+		return {
+			store
+		}
+	},
+	mounted() {
+		this.findLinks();
+	},
+	methods: {
+		findLinks() {
+			let opzioniRichiesta = {
+				method: 'GET',
+				url: this.store.urlApi,
+				params: {
+					query: this.store.searchMovie,
+					include_adult: 'false',
+					language: 'en-US',
+					page: '1',
+					api_key: this.store.apy_key
+				},
+				headers: {
+					accept: 'application/json',
+				},
+			};
+			axios.request(opzioniRichiesta).then(response => {
+				this.store.movieList = response.data.results
+				console.log("Ricevuto", response.data);
+			})
+				.catch(error => {
+					console.error(error);
+				});
+		}
+	}
+};
 
 </script>
 
 
 
 <template>
-
-  <findMoovie  v-for="contenuti in store.contenuto" :links="contenuti" />
-  
-
-  <div>
-    
-  </div>
+	<getFilm @search="findLinks" />
+	<findMoovie v-for="contenuti in store.movieList" :links="contenuti" />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

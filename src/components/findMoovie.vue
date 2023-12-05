@@ -28,6 +28,9 @@ export default {
       <div >
          
          <p>{{ links.title }}</p>
+         <p>{{ links.original_title }}</p>
+         <p>{{ links.vote_count }}</p>
+         <p>{{ links.original_language }}</p>
          
       </div>
 
