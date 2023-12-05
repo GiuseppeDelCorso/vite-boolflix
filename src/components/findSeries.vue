@@ -19,19 +19,18 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <div class="row d-flex ">
-            <div class="col-2 my-2 BgCard">
-                <p>{{ linksSeries.original_name }}</p>
-                <p>{{ linksSeries.vote_count }}</p>
-                <p>{{ linksSeries.original_language }}</p>
-            </div>
-        </div>
+    <div class="card2">
+        <p>{{ linksSeries.original_name }}</p>
+        <img :src="`/img/${linksSeries.original_language}.png`">
+        <p>{{ linksSeries.vote_count }}</p>
+        <p>{{ linksSeries.original_language }}</p>
     </div>
 </template>
 
 <style scoped>
-.BgCard {
-    background-color: black;
+.card2 {
+    width: 23%;
+    margin: 0.5rem;
+    background-color: red;
 }
 </style>

@@ -28,4 +28,11 @@ export default {
 
     </div>
 </template>
-<style scoped></style>
+<style scoped>
+input {
+    width: 20rem;
+    height: 2rem;
+    margin-right: 10px;
+    font-size: 20px;
+}
+</style>

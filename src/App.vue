@@ -72,13 +72,42 @@ export default {
 };
 
 </script>
-
+	
 
 
 <template>
-	<getFilm @search="findLinks" />
-	<findMoovie v-for="contenuti in store.movieList" :linksMovie="contenuti" />
-	<findSeries v-for="contenuti in store.seriesList" :linksSeries="contenuti" />
-</template>
+	<header>
+		<h1>Boolflix</h1>
+		<getFilm @search="findLinks" />
+	</header>
+	<section class="container">
+		<findMoovie v-for="contenuti in store.movieList" :linksMovie="contenuti" />
+	</section>
+	<section class="container">
+		<findSeries v-for="contenuti in store.seriesList" :linksSeries="contenuti" />
+	</section>
+</template> 
 
-<style scoped></style>
+<style scoped>
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 80px;
+	background-color: black;
+	color: red;
+	font-size: 20px;
+	padding: 4rem;
+}
+
+.container {
+	width: 80%;
+	height: 40vh;
+	margin: 2rem auto;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	overflow: auto;
+	flex-shrink: 0;
+}
+</style>
