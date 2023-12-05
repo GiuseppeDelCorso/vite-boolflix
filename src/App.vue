@@ -1,6 +1,8 @@
 <script >
 import findMoovie from './components/findMoovie.vue'
 import getFilm from './components/getFilm.vue'
+import getSeries from './components/getSeries.vue'
+import findSeries from './components/findSeries.vue'
 import { store } from "./store.js"
 import axios from 'axios'
 
@@ -8,7 +10,9 @@ import axios from 'axios'
 export default {
 	components: {
 		findMoovie,
-		getFilm
+		getFilm,
+		getSeries,
+		findSeries
 	},
 	data() {
 		return {
@@ -16,13 +20,14 @@ export default {
 		}
 	},
 	mounted() {
-		this.findLinks();
+		this.findLinksMovie();
+		this.findLinksSeries();
 	},
 	methods: {
-		findLinks() {
-			let opzioniRichiesta = {
+		findLinksMovie() {
+			let opzioniRichiestaMovie = {
 				method: 'GET',
-				url: this.store.urlApi,
+				url: this.store.urlApiMovie,
 				params: {
 					query: this.store.searchMovie,
 					include_adult: 'false',
@@ -34,14 +39,40 @@ export default {
 					accept: 'application/json',
 				},
 			};
-			axios.request(opzioniRichiesta).then(response => {
+			axios.request(opzioniRichiestaMovie).then(response => {
 				this.store.movieList = response.data.results
-				console.log("Ricevuto", response.data);
+				console.log("Ricevuto1", response.data);
 			})
 				.catch(error => {
 					console.error(error);
 				});
+		},
+		findLinksSeries() {
+			const opzioniRichiestaSeries = {
+				method: 'GET',
+				url: this.store.urlApiSeries,
+				params: {
+					query: this.store.searchMovie,
+					include_adult: 'false',
+					language: 'en-US',
+					page: '1',
+					api_key: this.store.apy_key
+				},
+				headers: {
+					accept: 'application/json',
+				}
+			};
+			axios.request(opzioniRichiestaSeries).then(response => {
+				this.store.seriesList = response.data.results
+				console.log("Ricevuto2", response.data);
+			})
+				.catch(error => {
+					console.error(error);
+				});
+
+
 		}
+
 	}
 };
 
@@ -50,8 +81,10 @@ export default {
 
 
 <template>
-	<getFilm @search="findLinks" />
-	<findMoovie v-for="contenuti in store.movieList" :links="contenuti" />
+	<getFilm @search="findLinksMovie" />
+	<getSeries @search="findLinksSeries" />
+	<findMoovie v-for="contenuti in store.movieList" :linksMovie="contenuti" />
+	<findSeries v-for="contenuti in store.seriesList" :linksSeries="contenuti" />
 </template>
 
 <style scoped></style>
