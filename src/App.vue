@@ -1,7 +1,6 @@
 <script >
 import findMoovie from './components/findMoovie.vue'
 import getFilm from './components/getFilm.vue'
-import getSeries from './components/getSeries.vue'
 import findSeries from './components/findSeries.vue'
 import { store } from "./store.js"
 import axios from 'axios'
@@ -11,7 +10,6 @@ export default {
 	components: {
 		findMoovie,
 		getFilm,
-		getSeries,
 		findSeries
 	},
 	data() {
@@ -20,11 +18,10 @@ export default {
 		}
 	},
 	mounted() {
-		this.findLinksMovie();
-		this.findLinksSeries();
+		this.findLinks();
 	},
 	methods: {
-		findLinksMovie() {
+		findLinks() {
 			let opzioniRichiestaMovie = {
 				method: 'GET',
 				url: this.store.urlApiMovie,
@@ -46,9 +43,8 @@ export default {
 				.catch(error => {
 					console.error(error);
 				});
-		},
-		findLinksSeries() {
-			const opzioniRichiestaSeries = {
+
+			let opzioniRichiestaSeries = {
 				method: 'GET',
 				url: this.store.urlApiSeries,
 				params: {
@@ -69,9 +65,8 @@ export default {
 				.catch(error => {
 					console.error(error);
 				});
+		},
 
-
-		}
 
 	}
 };
@@ -81,8 +76,7 @@ export default {
 
 
 <template>
-	<getFilm @search="findLinksMovie" />
-	<getSeries @search="findLinksSeries" />
+	<getFilm @search="findLinks" />
 	<findMoovie v-for="contenuti in store.movieList" :linksMovie="contenuti" />
 	<findSeries v-for="contenuti in store.seriesList" :linksSeries="contenuti" />
 </template>
