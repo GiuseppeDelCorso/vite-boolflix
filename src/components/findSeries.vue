@@ -108,6 +108,7 @@ export default {
     background-color: #000000;
     border: 1px solid black;
     opacity: 0.6;
+    overflow: auto;
 
 }
 
