@@ -6,7 +6,7 @@ export default {
     },
     data() {
         return {
-
+            voteInt: (Math.ceil(this.linksSeries.vote_average) / 2)
         }
     },
     methods: {
@@ -29,6 +29,9 @@ export default {
                 <p class="styleOverview">{{ linksSeries.overview }}</p>
                 <img class="imgLenguage" :src="`/img/${linksSeries.original_language}.png`">
                 <p class="styleVote">{{ linksSeries.vote_count }}</p>
+                <div class="card-star">
+                    <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -51,7 +54,6 @@ export default {
 .imgCard {
     width: 100%;
     height: 420px;
-
 }
 
 .imgLenguage {
@@ -61,6 +63,8 @@ export default {
     object-position: center;
     margin-left: 126px;
     bottom: 150px;
+    font-weight: bold;
+    color: #000000;
 }
 
 .styleTitle {
@@ -68,6 +72,9 @@ export default {
     font-weight: bold;
     color: white;
     bottom: 150px;
+    margin: 5%;
+    font-weight: bold;
+    color: white;
 
 }
 
@@ -76,6 +83,9 @@ export default {
     color: white;
     padding-top: 5px;
     bottom: 130px;
+    margin: 5%;
+    font-weight: bold;
+    color: white;
 }
 
 .styleOverview {
@@ -84,18 +94,36 @@ export default {
     color: white;
     padding-top: 5px;
     bottom: 130px;
+    margin: 5%;
+    font-weight: bold;
+    color: white;
 }
 
 
 .containerInfo {
-    background-color: black;
     position: relative;
     bottom: 420px;
     height: 420px;
+    display: none;
+    background-color: #000000;
+    border: 1px solid black;
+    opacity: 0.6;
 
 }
 
-.containerrdCa:hover {
-    display: none;
+.card-star {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.filled {
+    color: red;
+}
+
+.card2:hover .containerInfo {
+    display: block;
 }
 </style>

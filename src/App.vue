@@ -104,7 +104,7 @@ header {
 
 .container {
 	width: 100%;
-	height: 62vh;
+	height: 46vh;
 	flex-shrink: 0;
 	margin: 3rem auto;
 	display: flex;
@@ -117,5 +117,6 @@ header {
 	text-align: center;
 	font-weight: bold;
 	color: white;
+	margin: 0;
 }
 </style>
