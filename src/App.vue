@@ -28,7 +28,7 @@ export default {
 				params: {
 					query: this.store.searchMovie,
 					include_adult: 'false',
-					language: 'en-US',
+					language: '',
 					page: '1',
 					api_key: this.store.apy_key
 				},
@@ -50,7 +50,7 @@ export default {
 				params: {
 					query: this.store.searchMovie,
 					include_adult: 'false',
-					language: 'en-US',
+					language: '',
 					page: '1',
 					api_key: this.store.apy_key
 				},
@@ -80,9 +80,11 @@ export default {
 		<h1>Boolflix</h1>
 		<getFilm @search="findLinks" />
 	</header>
+	<h2 class="styleTitle">Risultati Film</h2>
 	<section class="container">
 		<findMoovie v-for="contenuti in store.movieList" :linksMovie="contenuti" />
 	</section>
+	<h2 class="styleTitle">Risultati Serie</h2>
 	<section class="container">
 		<findSeries v-for="contenuti in store.seriesList" :linksSeries="contenuti" />
 	</section>
@@ -93,7 +95,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 80px;
+	height: 20px;
 	background-color: black;
 	color: red;
 	font-size: 20px;
@@ -101,13 +103,19 @@ header {
 }
 
 .container {
-	width: 80%;
-	height: 40vh;
-	margin: 2rem auto;
+	width: 100%;
+	height: 62vh;
+	flex-shrink: 0;
+	margin: 3rem auto;
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	overflow: auto;
-	flex-shrink: 0;
+}
+
+.styleTitle {
+	text-align: center;
+	font-weight: bold;
+	color: white;
 }
 </style>
